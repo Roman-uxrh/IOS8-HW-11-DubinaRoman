@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         textField.layer.cornerRadius = 25
         textField.setLeftIcon(UIImage(systemName: "person")!)
         textField.setRightIcon(UIImage(systemName: "checkmark.circle.fill")!)
+        textField.shadowSetting(textField)
         return textField
     }()
     
@@ -94,4 +95,12 @@ extension UITextField {
         rightViewMode = .always
     }
     
+    func shadowSetting(_ textField: UITextField) {
+        textField.layer.shadowColor = UIColor.black.cgColor
+        textField.layer.shadowOpacity = 1
+        textField.layer.shadowOffset = .zero
+        textField.layer.shadowRadius = 10
+        textField.layer.shouldRasterize = true
+        textField.layer.rasterizationScale = UIScreen.main.scale
+    }
 }
