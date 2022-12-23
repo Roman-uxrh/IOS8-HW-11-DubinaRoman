@@ -39,3 +39,14 @@ extension UITextField {
         textField.layer.rasterizationScale = UIScreen.main.scale
     }
 }
+
+extension UIButton {
+    func shadowSetting(_ button: UIButton) {
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
+    }
+}
