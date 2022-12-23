@@ -17,6 +17,8 @@ fileprivate enum Constans {
         static let labelConnect = "or connect with"
         static let faceBookButton = "FaceBook"
         static let twitterBookButton = "Twitter"
+        static let labelAccount = "Dont have account?"
+        static let signButton = "Sign up"
     }
 }
 
@@ -81,7 +83,7 @@ class ViewController: UIViewController {
         return button
     }()
     
-    private lazy var labelConnect = {
+    private lazy var labelConnect: UILabel = {
         let labelLogin = UILabel()
         labelLogin.text = Constans.String.labelConnect
         labelLogin.textColor = .white
@@ -140,6 +142,25 @@ class ViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var labelAccount: UILabel = {
+        let labelLogin = UILabel()
+        labelLogin.text = Constans.String.labelAccount
+        labelLogin.textColor = .systemGray2
+        labelLogin.font = UIFont.boldSystemFont(ofSize: 16)
+        labelLogin.textAlignment = .center
+        return labelLogin
+    }()
+    
+    private lazy var signButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Constans.String.signButton, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.layer.cornerRadius = 25
+        button.backgroundColor = .blue
+        return button
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -168,6 +189,8 @@ class ViewController: UIViewController {
         view.addSubview(faceBookImage)
         view.addSubview(twitterButton)
         view.addSubview(twitterImage)
+        view.addSubview(labelAccount)
+        view.addSubview(signButton)
     }
     
     private func setupLayout() {
@@ -251,6 +274,17 @@ class ViewController: UIViewController {
             make.height.equalTo(15)
             make.width.equalTo(15)
             make.left.equalTo(twitterButton.snp.left).offset(10)
+        }
+        
+        labelAccount.snp.makeConstraints { make in
+            make.top.equalTo(faceBookButton.snp.bottom).offset(10)
+            make.centerX.equalTo(view).offset(-15)
+        }
+        
+        signButton.snp.makeConstraints { make in
+            make.top.equalTo(faceBookButton.snp.bottom).offset(10)
+            make.left.equalTo(labelAccount.snp.right).offset(5)
+            make.height.equalTo(20)
         }
     }
     
