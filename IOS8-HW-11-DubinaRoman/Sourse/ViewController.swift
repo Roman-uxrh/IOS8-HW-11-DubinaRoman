@@ -8,20 +8,27 @@
 import UIKit
 import SnapKit
 
+fileprivate enum Constans {
+    enum String {
+        static let labelLogin = "Login"
+        
+    }
+}
+
 class ViewController: UIViewController {
     
     // MARK: - UI Elements
     
     private lazy var labelLogin = {
         let labelLogin = UILabel()
-        labelLogin.text = "Login"
+        labelLogin.text = Constans.String.labelLogin
         labelLogin.textColor = .white
         labelLogin.font = UIFont.boldSystemFont(ofSize: 40)
         labelLogin.textAlignment = .center
         return labelLogin
     }()
     
-    private lazy var userNameTF: UITextField = {
+    private lazy var userName: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
         textField.textAlignment = .left
@@ -29,8 +36,21 @@ class ViewController: UIViewController {
         textField.font = UIFont(name: "Inter-Regular", size: 14)
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 25
-        textField.setLeftIcon(UIImage(systemName: "person")!)
-        textField.setRightIcon(UIImage(systemName: "checkmark.circle.fill")!)
+        textField.setLeftIcon(UIImage(systemName: "person"))
+        textField.setRightIcon(UIImage(systemName: "checkmark.circle.fill"))
+        textField.shadowSetting(textField)
+        return textField
+    }()
+    
+    private lazy var paswordName: UITextField = {
+        let textField = UITextField()
+        textField.textColor = .black
+        textField.textAlignment = .left
+        textField.placeholder = "Your name"
+        textField.font = UIFont(name: "Inter-Regular", size: 14)
+        textField.backgroundColor = .white
+        textField.layer.cornerRadius = 25
+        textField.setLeftIcon(UIImage(systemName: "lock"))
         textField.shadowSetting(textField)
         return textField
     }()
@@ -52,7 +72,8 @@ class ViewController: UIViewController {
     
     private func setupHierarchy() {
         view.addSubview(labelLogin)
-        view.addSubview(userNameTF)
+        view.addSubview(userName)
+        view.addSubview(paswordName)
     }
     
     private func setupLayout() {
@@ -62,45 +83,18 @@ class ViewController: UIViewController {
             make.top.equalTo(view).offset(100)
         }
         
-        userNameTF.snp.makeConstraints { make in
+        userName.snp.makeConstraints { make in
             make.top.equalTo(labelLogin.snp.bottom).offset (50)
             make.height.equalTo(50)
             make.left.equalTo (view).offset(40)
             make.right.equalTo(view).offset(-40)
+        }
+        
+        paswordName.snp.makeConstraints { make in
+            make.top.equalTo(userName.snp.bottom)
         }
     }
     
     // MARK: - Actions
 }
 
-extension UITextField {
-    
-    func setLeftIcon(_ image: UIImage) {
-        let iconView = UIImageView(frame: CGRect(x: 40, y: 5, width: 20, height: 20))
-        iconView.image = image
-        iconView.tintColor = .systemGray2
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 80, height: 30))
-        iconContainerView.addSubview(iconView)
-        leftView = iconContainerView
-        leftViewMode = .always
-    }
-    
-    func setRightIcon(_ image: UIImage) {
-        let iconView = UIImageView(frame: CGRect(x: 40, y: 5, width: 20, height: 20))
-        iconView.image = image
-        iconView.tintColor = .systemGreen
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 80, height: 30))
-        iconContainerView.addSubview(iconView)
-        rightView = iconContainerView
-        rightViewMode = .always
-    }
-    
-    func shadowSetting(_ textField: UITextField) {
-        textField.layer.shadowColor = UIColor.black.cgColor
-        textField.layer.shadowOpacity = 1
-        textField.layer.shadowOffset = .zero
-        textField.layer.shadowRadius = 10
-        textField.layer.shouldRasterize = true
-        textField.layer.rasterizationScale = UIScreen.main.scale
-    }
-}
