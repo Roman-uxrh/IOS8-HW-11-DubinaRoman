@@ -12,6 +12,7 @@
 		84E1F7DA2955C08B0021879D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1F7D92955C08B0021879D /* ViewController.swift */; };
 		84E1F7DF2955C08E0021879D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E1F7DE2955C08E0021879D /* Assets.xcassets */; };
 		84E1F7E22955C08E0021879D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E1F7E02955C08E0021879D /* LaunchScreen.storyboard */; };
+		84E1F7EE2955C8450021879D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 84E1F7ED2955C8450021879D /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E1F7EE2955C8450021879D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +106,9 @@
 			dependencies = (
 			);
 			name = "IOS8-HW-11-DubinaRoman";
+			packageProductDependencies = (
+				84E1F7ED2955C8450021879D /* SnapKit */,
+			);
 			productName = "IOS8-HW-11-DubinaRoman";
 			productReference = 84E1F7D22955C08B0021879D /* IOS8-HW-11-DubinaRoman.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +137,9 @@
 				Base,
 			);
 			mainGroup = 84E1F7C92955C08A0021879D;
+			packageReferences = (
+				84E1F7EC2955C8450021879D /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 84E1F7D32955C08B0021879D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -368,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84E1F7EC2955C8450021879D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84E1F7ED2955C8450021879D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84E1F7EC2955C8450021879D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84E1F7CA2955C08A0021879D /* Project object */;
 }
