@@ -11,7 +11,8 @@ import SnapKit
 fileprivate enum Constans {
     enum String {
         static let labelLogin = "Login"
-        
+        static let userName = "Your name"
+        static let password = "Password"
     }
 }
 
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.textColor = .black
         textField.textAlignment = .left
-        textField.placeholder = "Your name"
+        textField.placeholder = Constans.String.userName
         textField.font = UIFont(name: "Inter-Regular", size: 14)
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 25
@@ -42,11 +43,11 @@ class ViewController: UIViewController {
         return textField
     }()
     
-    private lazy var paswordName: UITextField = {
+    private lazy var pasword: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
         textField.textAlignment = .left
-        textField.placeholder = "Your name"
+        textField.placeholder = Constans.String.password
         textField.font = UIFont(name: "Inter-Regular", size: 14)
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 25
@@ -73,7 +74,7 @@ class ViewController: UIViewController {
     private func setupHierarchy() {
         view.addSubview(labelLogin)
         view.addSubview(userName)
-        view.addSubview(paswordName)
+        view.addSubview(pasword)
     }
     
     private func setupLayout() {
@@ -90,8 +91,11 @@ class ViewController: UIViewController {
             make.right.equalTo(view).offset(-40)
         }
         
-        paswordName.snp.makeConstraints { make in
-            make.top.equalTo(userName.snp.bottom)
+        pasword.snp.makeConstraints { make in
+            make.top.equalTo(userName.snp.bottom).offset(20)
+            make.height.equalTo(50)
+            make.left.equalTo (view).offset(40)
+            make.right.equalTo(view).offset(-40)
         }
     }
     
