@@ -13,6 +13,7 @@ fileprivate enum Constans {
         static let labelLogin = "Login"
         static let userName = "Your name"
         static let password = "Password"
+        static let forgotPasswordButton = "Forgot your password?"
     }
 }
 
@@ -67,6 +68,16 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private lazy var forgotPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Constans.String.forgotPasswordButton, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.layer.cornerRadius = 25
+        button.backgroundColor = .blue
+        return button
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -87,6 +98,7 @@ class ViewController: UIViewController {
         view.addSubview(userName)
         view.addSubview(pasword)
         view.addSubview(loginButton)
+        view.addSubview(forgotPasswordButton)
     }
     
     private func setupLayout() {
@@ -115,6 +127,13 @@ class ViewController: UIViewController {
             make.height.equalTo(50)
             make.left.equalTo (view).offset(40)
             make.right.equalTo(view).offset(-40)
+        }
+        
+        forgotPasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(20)
+            make.height.equalTo(20)
+            make.left.equalTo (view).offset(85)
+            make.right.equalTo(view).offset(-85)
         }
     }
     
