@@ -16,6 +16,7 @@ fileprivate enum Constans {
         static let forgotPasswordButton = "Forgot your password?"
         static let labelConnect = "or connect with"
         static let faceBookButton = "FaceBook"
+        static let twitterBookButton = "Twitter"
     }
 }
 
@@ -121,6 +122,24 @@ class ViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var twitterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Constans.String.twitterBookButton, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.layer.cornerRadius = 15
+        button.backgroundColor = .blue
+        button.shadowSetting(button)
+        return button
+    }()
+    
+    private lazy var twitterImage: UIImageView = {
+        let image = UIImage(named: "twitter")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -147,6 +166,8 @@ class ViewController: UIViewController {
         view.addSubview(stripeRightView)
         view.addSubview(faceBookButton)
         view.addSubview(faceBookImage)
+        view.addSubview(twitterButton)
+        view.addSubview(twitterImage)
     }
     
     private func setupLayout() {
@@ -208,14 +229,28 @@ class ViewController: UIViewController {
             make.top.equalTo(labelConnect.snp.bottom).offset(20)
             make.height.equalTo(30)
             make.left.equalTo (view).offset(20)
-            make.right.equalTo(view).offset(-220)
+            make.centerX.equalTo(view).offset(-100)
         }
         
         faceBookImage.snp.makeConstraints { make in
             make.top.equalTo(stripeLeftView.snp.bottom).offset(35)
             make.height.equalTo(15)
             make.width.equalTo(15)
-            make.left.equalTo(view).offset(30)
+            make.left.equalTo(faceBookButton.snp.left).offset(10)
+        }
+        
+        twitterButton.snp.makeConstraints { make in
+            make.top.equalTo(labelConnect.snp.bottom).offset(20)
+            make.height.equalTo(30)
+            make.centerX.equalTo(view).offset(100)
+            make.right.equalTo(view).offset(-20)
+        }
+        
+        twitterImage.snp.makeConstraints { make in
+            make.top.equalTo(stripeRightView.snp.bottom).offset(35)
+            make.height.equalTo(15)
+            make.width.equalTo(15)
+            make.left.equalTo(twitterButton.snp.left).offset(10)
         }
     }
     
