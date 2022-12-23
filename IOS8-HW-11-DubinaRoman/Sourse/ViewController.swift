@@ -15,6 +15,7 @@ fileprivate enum Constans {
         static let password = "Password"
         static let forgotPasswordButton = "Forgot your password?"
         static let labelConnect = "or connect with"
+        static let faceBookButton = "FaceBook"
     }
 }
 
@@ -102,6 +103,24 @@ class ViewController: UIViewController {
         return view
     }()
     
+    private lazy var faceBookButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Constans.String.faceBookButton, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.layer.cornerRadius = 15
+        button.backgroundColor = .systemBlue
+        button.shadowSetting(button)
+        return button
+    }()
+    
+    private lazy var faceBookImage: UIImageView = {
+        let image = UIImage(named: "images")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -126,17 +145,19 @@ class ViewController: UIViewController {
         view.addSubview(labelConnect)
         view.addSubview(stripeLeftView)
         view.addSubview(stripeRightView)
+        view.addSubview(faceBookButton)
+        view.addSubview(faceBookImage)
     }
     
     private func setupLayout() {
         
         labelLogin.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(view).offset(100)
+            make.top.equalTo(view).offset(60)
         }
         
         userName.snp.makeConstraints { make in
-            make.top.equalTo(labelLogin.snp.bottom).offset (50)
+            make.top.equalTo(labelLogin.snp.bottom).offset (40)
             make.height.equalTo(50)
             make.left.equalTo (view).offset(40)
             make.right.equalTo(view).offset(-40)
@@ -164,13 +185,13 @@ class ViewController: UIViewController {
         }
         
         labelConnect.snp.makeConstraints { make in
-            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(170)
+            make.bottom.equalTo(view).offset(-140)
             make.centerX.equalTo(view)
         }
         
         stripeLeftView.snp.makeConstraints { make in
             make.right.equalTo(labelConnect.snp.left).offset(-7)
-            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(180)
+            make.bottom.equalTo(view).offset(-147)
             make.height.equalTo(1)
             make.width.equalTo(150)
             
@@ -178,9 +199,23 @@ class ViewController: UIViewController {
         
         stripeRightView.snp.makeConstraints { make in
             make.left.equalTo(labelConnect.snp.right).offset(7)
-            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(180)
+            make.bottom.equalTo(view).offset(-147)
             make.height.equalTo(1)
             make.width.equalTo(150)
+        }
+        
+        faceBookButton.snp.makeConstraints { make in
+            make.top.equalTo(labelConnect.snp.bottom).offset(20)
+            make.height.equalTo(30)
+            make.left.equalTo (view).offset(20)
+            make.right.equalTo(view).offset(-220)
+        }
+        
+        faceBookImage.snp.makeConstraints { make in
+            make.top.equalTo(stripeLeftView.snp.bottom).offset(35)
+            make.height.equalTo(15)
+            make.width.equalTo(15)
+            make.left.equalTo(view).offset(30)
         }
     }
     
