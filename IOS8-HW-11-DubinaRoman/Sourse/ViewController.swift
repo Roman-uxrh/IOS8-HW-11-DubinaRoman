@@ -8,12 +8,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    // MARK: - UI Elements
+    
+    
+    // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupView()
+        setupHierarchy()
+        setupHierarchy()
     }
-
-
+    
+    // MARK: - Setups
+    
+    private func setupView() {
+    }
+    
+    private func setupHierarchy() {
+        
+    }
+    
+    private func setupLayout() {
+        
+    }
+    
+    // MARK: - Actions
 }
 
