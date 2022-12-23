@@ -14,6 +14,7 @@ fileprivate enum Constans {
         static let userName = "Your name"
         static let password = "Password"
         static let forgotPasswordButton = "Forgot your password?"
+        static let labelConnect = "or connect with"
     }
 }
 
@@ -78,6 +79,29 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private lazy var labelConnect = {
+        let labelLogin = UILabel()
+        labelLogin.text = Constans.String.labelConnect
+        labelLogin.textColor = .white
+        labelLogin.font = UIFont.boldSystemFont(ofSize: 16)
+        labelLogin.textAlignment = .center
+        return labelLogin
+    }()
+    
+    private lazy var stripeLeftView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 25
+        return view
+    }()
+    
+    private lazy var stripeRightView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 25
+        return view
+    }()
+    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -99,6 +123,9 @@ class ViewController: UIViewController {
         view.addSubview(pasword)
         view.addSubview(loginButton)
         view.addSubview(forgotPasswordButton)
+        view.addSubview(labelConnect)
+        view.addSubview(stripeLeftView)
+        view.addSubview(stripeRightView)
     }
     
     private func setupLayout() {
@@ -134,6 +161,26 @@ class ViewController: UIViewController {
             make.height.equalTo(20)
             make.left.equalTo (view).offset(85)
             make.right.equalTo(view).offset(-85)
+        }
+        
+        labelConnect.snp.makeConstraints { make in
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(170)
+            make.centerX.equalTo(view)
+        }
+        
+        stripeLeftView.snp.makeConstraints { make in
+            make.right.equalTo(labelConnect.snp.left).offset(-7)
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(180)
+            make.height.equalTo(1)
+            make.width.equalTo(150)
+            
+        }
+        
+        stripeRightView.snp.makeConstraints { make in
+            make.left.equalTo(labelConnect.snp.right).offset(7)
+            make.top.equalTo(forgotPasswordButton.snp.bottom).offset(180)
+            make.height.equalTo(1)
+            make.width.equalTo(150)
         }
     }
     
