@@ -8,27 +8,13 @@
 import UIKit
 import SnapKit
 
-fileprivate enum Constans {
-    enum String {
-        static let labelLogin = "Login"
-        static let userName = "Your name"
-        static let password = "Password"
-        static let forgotPasswordButton = "Forgot your password?"
-        static let labelConnect = "or connect with"
-        static let faceBookButton = "FaceBook"
-        static let twitterBookButton = "Twitter"
-        static let labelAccount = "Dont have account?"
-        static let signButton = "Sign up"
-    }
-}
-
 class ViewController: UIViewController {
     
     // MARK: - UI Elements
     
     private lazy var labelLogin = {
         let labelLogin = UILabel()
-        labelLogin.text = Constans.String.labelLogin
+        labelLogin.text = "Login"
         labelLogin.textColor = .white
         labelLogin.font = UIFont.boldSystemFont(ofSize: 40)
         labelLogin.textAlignment = .center
@@ -39,7 +25,7 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.textColor = .black
         textField.textAlignment = .left
-        textField.placeholder = Constans.String.userName
+        textField.placeholder = "Your name"
         textField.font = UIFont(name: "Inter-Regular", size: 14)
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 25
@@ -53,7 +39,7 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.textColor = .black
         textField.textAlignment = .left
-        textField.placeholder = Constans.String.password
+        textField.placeholder = "Password"
         textField.font = UIFont(name: "Inter-Regular", size: 14)
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 25
@@ -64,9 +50,9 @@ class ViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Constans.String.labelLogin, for: .normal)
+        button.setTitle("Login", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 14)
         button.layer.cornerRadius = 25
         button.backgroundColor = .systemIndigo
         button.shadowSetting(button)
@@ -75,19 +61,19 @@ class ViewController: UIViewController {
     
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Constans.String.forgotPasswordButton, for: .normal)
+        button.setTitle("Forgot your password?", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 14)
         button.layer.cornerRadius = 25
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 1)
         return button
     }()
     
     private lazy var labelConnect: UILabel = {
         let labelLogin = UILabel()
-        labelLogin.text = Constans.String.labelConnect
+        labelLogin.text = "or connect with"
         labelLogin.textColor = .white
-        labelLogin.font = UIFont.boldSystemFont(ofSize: 16)
+        labelLogin.font = UIFont.boldSystemFont(ofSize: 14)
         labelLogin.textAlignment = .center
         return labelLogin
     }()
@@ -108,9 +94,9 @@ class ViewController: UIViewController {
     
     private lazy var faceBookButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Constans.String.faceBookButton, for: .normal)
+        button.setTitle("FaceBook", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 14)
         button.layer.cornerRadius = 15
         button.backgroundColor = .systemBlue
         button.shadowSetting(button)
@@ -126,9 +112,9 @@ class ViewController: UIViewController {
     
     private lazy var twitterButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Constans.String.twitterBookButton, for: .normal)
+        button.setTitle("Twitter", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 14)
         button.layer.cornerRadius = 15
         button.backgroundColor = .blue
         button.shadowSetting(button)
@@ -144,20 +130,20 @@ class ViewController: UIViewController {
     
     private lazy var labelAccount: UILabel = {
         let labelLogin = UILabel()
-        labelLogin.text = Constans.String.labelAccount
-        labelLogin.textColor = .systemGray2
-        labelLogin.font = UIFont.boldSystemFont(ofSize: 16)
+        labelLogin.text = "Dont have account?"
+        labelLogin.textColor = .white
+        labelLogin.font = UIFont.boldSystemFont(ofSize: 14)
         labelLogin.textAlignment = .center
         return labelLogin
     }()
     
     private lazy var signButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Constans.String.signButton, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 16)
+        button.setTitle("Sign up", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Inter-Bold", size: 14)
         button.layer.cornerRadius = 25
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 1)
         return button
     }()
     
@@ -168,30 +154,23 @@ class ViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
+        addTapGestureToHideKeyboard()
     }
     
     // MARK: - Setups
     
     private func setupView() {
-        view.backgroundColor = .blue
+        view.backgroundColor = UIColor(red: 0.7, green: 0.8, blue: 1, alpha: 1)
     }
     
     private func setupHierarchy() {
-        view.addSubview(labelLogin)
-        view.addSubview(userName)
-        view.addSubview(pasword)
-        view.addSubview(loginButton)
-        view.addSubview(forgotPasswordButton)
-        view.addSubview(labelConnect)
-        view.addSubview(stripeLeftView)
-        view.addSubview(stripeRightView)
-        view.addSubview(faceBookButton)
-        view.addSubview(faceBookImage)
-        view.addSubview(twitterButton)
-        view.addSubview(twitterImage)
-        view.addSubview(labelAccount)
-        view.addSubview(signButton)
+        [labelLogin, userName, pasword, loginButton, forgotPasswordButton, labelConnect, stripeLeftView, stripeRightView, faceBookButton, faceBookImage, twitterButton, twitterImage, labelAccount, signButton].forEach { view.addSubview($0) }
     }
+    
+    func addTapGestureToHideKeyboard() {
+           let tapGesture = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
+           view.addGestureRecognizer(tapGesture)
+       }
     
     private func setupLayout() {
         
@@ -238,7 +217,6 @@ class ViewController: UIViewController {
             make.bottom.equalTo(view).offset(-147)
             make.height.equalTo(1)
             make.width.equalTo(150)
-            
         }
         
         stripeRightView.snp.makeConstraints { make in
@@ -284,10 +262,8 @@ class ViewController: UIViewController {
         signButton.snp.makeConstraints { make in
             make.top.equalTo(faceBookButton.snp.bottom).offset(10)
             make.left.equalTo(labelAccount.snp.right).offset(5)
-            make.height.equalTo(20)
+            make.height.equalTo(10)
         }
     }
-    
-    // MARK: - Actions
 }
 
