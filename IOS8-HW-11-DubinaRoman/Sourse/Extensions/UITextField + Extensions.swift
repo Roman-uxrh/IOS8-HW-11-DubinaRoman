@@ -5,7 +5,6 @@
 //  Created by admin on 23.12.2022.
 //
 
-import Foundation
 import UIKit
 
 extension UITextField {
@@ -34,19 +33,9 @@ extension UITextField {
         textField.layer.shadowColor = UIColor.black.cgColor
         textField.layer.shadowOpacity = 1
         textField.layer.shadowOffset = .zero
-        textField.layer.shadowRadius = 10
+        textField.layer.shadowRadius = 0.5
         textField.layer.shouldRasterize = true
         textField.layer.rasterizationScale = UIScreen.main.scale
     }
 }
 
-extension UIButton {
-    func shadowSetting(_ button: UIButton) {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 1
-        button.layer.shadowOffset = .zero
-        button.layer.shadowRadius = 10
-        button.layer.shouldRasterize = true
-        button.layer.rasterizationScale = UIScreen.main.scale
-    }
-}
